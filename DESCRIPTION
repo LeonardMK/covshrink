@@ -1,16 +1,25 @@
 Package: covshrink
-Title: What the Package Does (One Line, Title Case)
+Title: Estimate the shrinkage covariance by Ledoit and Wolf (2003)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Leonard",
+           family = "Kunz",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+           email = "leonardkunz@hotmail.de"
+Description: Sample covariance matrix suffers from high variance making it instabile in small samples.
+	Shrinkage can be applied to reduce variance at the cost of some bias. Ledoit and Wolfe (2003) 
+	present a method to estimate a shrinked covariance matrix. The optimal degree of shrinkage
+	is computed as well.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    MASS,
+    dplyr,
+    purrr,
+    magrittr
