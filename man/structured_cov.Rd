@@ -4,7 +4,7 @@
 \alias{structured_cov}
 \title{Estimate of the structured covariance matrix}
 \usage{
-structured_cov(mat_cov, na.rm = TRUE, mat_obs_weight = NULL)
+structured_cov(mat_cov, na.rm = FALSE, mat_obs_weight = NULL)
 }
 \arguments{
 \item{mat_cov}{matrix containing sample covariance estimates.}

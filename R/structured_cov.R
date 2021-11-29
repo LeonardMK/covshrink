@@ -10,7 +10,7 @@
 #' @return matrix containing the \eqn{\bar{\rho} \times s_{i} \times s_{j}} on
 #'    for variable \eqn{i} and \eqn{j} on the nondiagonal and \eqn{s_i^2} on
 #'    the diagonal.
-structured_cov <- function(mat_cov, na.rm = TRUE, mat_obs_weight = NULL) {
+structured_cov <- function(mat_cov, na.rm = FALSE, mat_obs_weight = NULL) {
 
   mat_cor <- stats::cov2cor(mat_cov)
   vec_cor <- as.vector(mat_cor[lower.tri(mat_cor)])
