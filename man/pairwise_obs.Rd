@@ -2,7 +2,7 @@
 % Please edit documentation in R/pairwise_obs.R
 \name{pairwise_obs}
 \alias{pairwise_obs}
-\title{Compute the number of pairwise complete observations}
+\title{Number of pairwise complete observations}
 \usage{
 pairwise_obs(data)
 }
@@ -13,5 +13,5 @@ pairwise_obs(data)
 matrix of integers giving the number of pairwise complete observations.
 }
 \description{
-Compute the number of pairwise complete observations
+Number of pairwise complete observations
 }

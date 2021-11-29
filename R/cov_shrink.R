@@ -1,3 +1,13 @@
+#' Title
+#'
+#' @param data
+#' @param use
+#' @param na.rm
+#'
+#' @return
+#' @export
+#'
+#' @examples
 cov_shrink <- function(data, use = "everything", na.rm = FALSE) {
 
   # Check that all elements are of type numeric. If not stop
@@ -7,5 +17,13 @@ cov_shrink <- function(data, use = "everything", na.rm = FALSE) {
   # get column names and if not
 
   # Depending on use value compute whole matrix
+
+  # Compute optimal delta
+
+  # Compute structured estimator
+
+  # Compute shrinked estimator
+
+  # Return delta_hat, covariance estimate
 
 }

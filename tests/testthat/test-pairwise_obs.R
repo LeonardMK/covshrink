@@ -14,7 +14,7 @@ test_that("Calculating the number of pairwise complete observations", {
   mat_data_obs <- pairwise_obs(mat_data_incomplete)
 
   mat_data_obs_correct <- matrix(
-    c(10, 5, 5, 5, 10, 3, 5, 3, 10),
+    c(8, 5, 5, 5, 6, 3, 5, 3, 6),
     nrow = 3,
     ncol = 3
   )
@@ -26,7 +26,7 @@ test_that("Calculating the number of pairwise complete observations", {
   expect_true({
     mat_data_obs %>%
       as.vector() %>%
-      map_lgl(~ is_integer(.x)) %>%
+      purrr::map_lgl(~ purrr::is_integer(.x)) %>%
       all()
     })
 

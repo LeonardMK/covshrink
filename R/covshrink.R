@@ -1,14 +1,15 @@
-#' @title covshrink: A package for computing the shrinked covariance matrix
-#' proposed by Ledoit and Wolf
+#' @title covshrink: The package computes the shrinked covariance matrix
+#' proposed by Ledoit and Wolfe (2003).
 #'
+#' Currently the package exports only a single function:
+#' cov_shrink
 #'
-#' The foo package provides three categories of important functions:
-#' foo, bar and baz.
-#'
-#' @section Foo functions:
+#' @section covshrink functions:
 #' The foo functions ...
 #'
 #' @docType package
-#' @name foo
+#' @name covshrink
+#'
+#' @importFrom magrittr %>%
 NULL
 #> NULL

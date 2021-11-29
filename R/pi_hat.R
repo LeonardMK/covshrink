@@ -4,16 +4,14 @@ pi_hat <- function(data,
                    na.rm = TRUE,
                    use = NULL) {
 
-  if (!is.matrix(data)) data <- as.matrix(data)
-
-  if (is_null(cov_mat)) {
-    vec_s_ij <- cov_mat
-  } else {
-    if (is_null(use)) use <- "everything"
-    vec_s_ij <- cov(data, use = use)
-  }
-
   # Center dataset
   data_demeaned <- scale(data, TRUE, FALSE)
+
+  mat_pi_hat <- matrix(nrow = ncol(data), ncol = ncol(data))
+
+  # Compute row wise products
+  mat_cov_single <- row_wise_full_product(data_demeaned)
+
+  # Subtract covariance entries
 
 }

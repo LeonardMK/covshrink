@@ -1,4 +1,4 @@
-#' Compute the number of pairwise complete observations
+#' Number of pairwise complete observations
 #'
 #' @param data dataframe or matrix
 #'

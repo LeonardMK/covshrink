@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Leonard",
            family = "Kunz",
            role = c("aut", "cre"),
-           email = "leonardkunz@hotmail.de"
+           email = "leonardkunz@hotmail.de")
 Description: Sample covariance matrix suffers from high variance making it instabile in small samples.
 	Shrinkage can be applied to reduce variance at the cost of some bias. Ledoit and Wolfe (2003) 
 	present a method to estimate a shrinked covariance matrix. The optimal degree of shrinkage
@@ -22,4 +22,5 @@ Imports:
     MASS,
     dplyr,
     purrr,
-    magrittr
+    magrittr,
+    abind
