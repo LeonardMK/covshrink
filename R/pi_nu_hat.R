@@ -1,8 +1,8 @@
 #' Estimator of pi_ij and nu_ij
 #'
 #' @param data matrix or data.frame containing only numeric variables
-#' @param mat_cov matrix containing sample covariance estimates.
-#' @param mat_obs matrix of pairwise observations.
+#' @param mat_covariance matrix containing sample covariance estimates.
+#' @param mat_pairwise_obs matrix of pairwise observations.
 #' @param na.rm logical value indicating whether \code{NA} values should be
 #'    stripped before the computation proceeds.
 #'
@@ -10,21 +10,21 @@
 #'    \eqn{\sqrt{s_{j}^2 / s_{i}^2} \times \nu_{ii, ij}} and
 #'    \eqn{\sqrt{s_{i}^2 / s_{j}^2} \times \nu_{jj, ij}}.
 pi_nu_hat <- function(data,
-                       mat_cov,
-                       mat_obs,
+                       mat_covariance,
+                       mat_pairwise_obs,
                        na.rm = FALSE) {
 
   # Demean data
   mat_data_demeaned <- scale(data, TRUE, FALSE)
 
   # Create index to iterate over
-  int_nrow_mat_cov <- nrow(mat_cov)
-  vec_index_i <- 1:int_nrow_mat_cov
+  int_nrow_mat_covariance <- nrow(mat_covariance)
+  vec_index_i <- 1:int_nrow_mat_covariance
 
   # Create empty matrices to store results
-  mat_pi_hat <- matrix(nrow = int_nrow_mat_cov, col = int_nrow_mat_cov)
-  mat_nu_hat_ii <- matrix(nrow = int_nrow_mat_cov, col = int_nrow_mat_cov)
-  mat_nu_hat_jj <- matrix(nrow = int_nrow_mat_cov, col = int_nrow_mat_cov)
+  mat_pi_hat <- matrix(nrow = int_nrow_mat_covariance, ncol = int_nrow_mat_covariance)
+  mat_nu_hat_ii <- matrix(nrow = int_nrow_mat_covariance, ncol = int_nrow_mat_covariance)
+  mat_nu_hat_jj <- matrix(nrow = int_nrow_mat_covariance, ncol = int_nrow_mat_covariance)
 
   # Calculate pi and rho in a single step
   for(int_i in vec_index_i){
@@ -34,7 +34,7 @@ pi_nu_hat <- function(data,
     for(int_j in vec_index_j){
 
       # Calculate pi hat
-      dbl_s_ij <- mat_cov[int_i, int_j]
+      dbl_s_ij <- mat_covariance[int_i, int_j]
       vec_y_it <- mat_data_demeaned[, int_i]
       vec_y_jt <- mat_data_demeaned[, int_j]
 
@@ -42,8 +42,8 @@ pi_nu_hat <- function(data,
       mat_pi_hat[int_i, int_j] <- dbl_pi_hat_ij
 
       # Calculate rho hat
-      dbl_s_ii <- mat_cov[int_i, int_i]
-      dbl_s_jj <- mat_cov[int_j, int_j]
+      dbl_s_ii <- mat_covariance[int_i, int_i]
+      dbl_s_jj <- mat_covariance[int_j, int_j]
       vec_nu_hat_i <- (vec_y_it^2 - dbl_s_ii) * (vec_y_it * vec_y_jt - dbl_s_ij)
       vec_nu_hat_j <- (vec_y_jt^2 - dbl_s_jj) * (vec_y_it * vec_y_jt - dbl_s_ij)
       dbl_nu_hat_ii <- mean(vec_nu_hat_i, na.rm = na.rm)

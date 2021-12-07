@@ -4,14 +4,14 @@
 \alias{pi_nu_hat}
 \title{Estimator of pi_ij and nu_ij}
 \usage{
-pi_nu_hat(data, mat_cov, mat_obs, na.rm = FALSE)
+pi_nu_hat(data, mat_covariance, mat_pairwise_obs, na.rm = FALSE)
 }
 \arguments{
 \item{data}{matrix or data.frame containing only numeric variables}
 
-\item{mat_cov}{matrix containing sample covariance estimates.}
+\item{mat_covariance}{matrix containing sample covariance estimates.}
 
-\item{mat_obs}{matrix of pairwise observations.}
+\item{mat_pairwise_obs}{matrix of pairwise observations.}
 
 \item{na.rm}{logical value indicating whether \code{NA} values should be
 stripped before the computation proceeds.}

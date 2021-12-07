@@ -2,16 +2,62 @@
 % Please edit documentation in R/cov_shrink.R
 \name{cov_shrink}
 \alias{cov_shrink}
-\title{Title}
+\title{Shrinked Covariance Matrix}
 \usage{
-cov_shrink(data, use = "everything", na.rm = FALSE)
+cov_shrink(data, na.rm = FALSE, use = "everything")
 }
 \arguments{
-\item{na.rm}{}
+\item{data}{matrix or data.frame containing only numeric variables}
+
+\item{na.rm}{matrix or data.frame containing only numeric variables}
+
+\item{use}{character string as in \code{\link[stats]{cov}}. Giving a method
+for computing covariances in the presence of missing values.This must be
+(an abbreviation of) one of the strings "everything", "all.obs",
+"complete.obs", "na.or.complete", or "pairwise.complete.obs".}
 }
 \value{
-
+list containing the shrinked covariance matrix and the optimal
+shrinkage parameter \eqn{\delta}.
 }
 \description{
-Title
+This function computes the shrinked covariance matrix from the sample
+covariance matrix and a structured estimator. The optimal shrinkage
+intensity is estimated too.
+}
+\details{
+The estimator computes a weighted mean of two covariance estimators.
+The unstructured estimator is the sample covariance matrix denoted as
+\eqn{S} and a structured estimator dentoed as \eqn{F}. The returned
+covariance matrix is computed by the following equation
+\deqn{\delta F + (1 - \delta) S}
+with \eqn{\delta} denoting the weighting term taking values between
+\eqn{0} and \eqn{1}.
+
+The structured estimator contains the following entries
+\deqn{
+   f_{ij} = s_{ij}^2 \qquad i = j \\
+   f_{ij} = \bar{r} s_{ii} s_{jj}
+   }
+
+In case missing values are present the
+}
+\examples{
+library(MASS)
+library(matrixcalc)
+
+set.seed(30)
+int_p <- 3
+int_N <- 5
+vec_mu <- rnorm(int_p)
+mat_A <- matrix(runif(int_p^2) - 1, nrow = 3)
+mat_Sigma <- cov2cor(t(mat_A) \%*\% mat_A)
+X <- mvrnorm(int_N, vec_mu, mat_Sigma)
+
+cov_shrink(X, )
+}
+\references{
+Ledoit, Olivier and Wolf, Michael, Honey, I Shrunk the Sample
+Covariance Matrix (June 2003). UPF Economics and Business Working Paper
+No. 691.
 }

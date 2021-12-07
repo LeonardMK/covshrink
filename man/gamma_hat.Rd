@@ -4,10 +4,10 @@
 \alias{gamma_hat}
 \title{Estimate of gamma}
 \usage{
-gamma_hat(mat_cov, mat_structurded, na.rm)
+gamma_hat(mat_covariance, mat_structurded, na.rm)
 }
 \arguments{
-\item{mat_cov}{matrix containing sample covariance matrix.}
+\item{mat_covariance}{matrix containing sample covariance matrix.}
 
 \item{mat_structurded}{matrix containing structured covariance matrix.}
 

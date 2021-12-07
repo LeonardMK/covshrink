@@ -23,4 +23,5 @@ Imports:
     dplyr,
     purrr,
     magrittr,
-    abind
+    abind,
+    matrixcalc

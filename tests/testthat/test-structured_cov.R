@@ -27,10 +27,11 @@ test_that("Calculation of structured covariance estimator", {
   diag(mat_structured_cov_true) <- c(1, 4, 9)
   diag(mat_structured_cov_weighted_true) <- c(1, 4, 9)
 
-  mat_structured_cov <- structured_cov(mat_cov, TRUE, NULL)
-  mat_structured_cov_weighted <- structured_cov(mat_cov, TRUE, mat_obs)
+  list_structured_cov <- structured_cov(mat_cov, TRUE, NULL)
+  list_structured_cov_weighted <- structured_cov(mat_cov, TRUE, mat_obs)
 
-  expect_equal(mat_structured_cov, mat_structured_cov_true)
-  expect_equal(mat_structured_cov_weighted, mat_structured_cov_weighted_true)
+  expect_equal(list_structured_cov$structured, mat_structured_cov_true)
+  expect_equal(list_structured_cov_weighted$structured,
+               mat_structured_cov_weighted_true)
 
 })

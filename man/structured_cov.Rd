@@ -4,10 +4,10 @@
 \alias{structured_cov}
 \title{Estimate of the structured covariance matrix}
 \usage{
-structured_cov(mat_cov, na.rm = FALSE, mat_obs_weight = NULL)
+structured_cov(mat_covariance, na.rm = FALSE, mat_obs_weight = NULL)
 }
 \arguments{
-\item{mat_cov}{matrix containing sample covariance estimates.}
+\item{mat_covariance}{matrix containing sample covariance estimates.}
 
 \item{na.rm}{logical value indicating whether \code{NA} values should be
 stripped before the computation proceeds.}
